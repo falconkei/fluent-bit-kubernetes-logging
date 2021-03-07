@@ -20,7 +20,7 @@ data:
 
     @INCLUDE input-kubernetes.conf
     @INCLUDE filter-kubernetes.conf
-    @INCLUDE output-forward.conf
+    @INCLUDE output-splunk.conf
 
   input-kubernetes.conf: |
     [INPUT]
@@ -46,15 +46,16 @@ data:
         K8S-Logging.Parser  On
         K8S-Logging.Exclude Off
 
-  output-forward.conf: |
+  output-splunk.conf: |
     [OUTPUT]
-        Name            forward
+        Name            splunk
         Match           *
-        Host            172.31.24.39
-        Port            24224
-        Logstash_Format On
-        Replace_Dots    On
-        Retry_Limit     False
+        Host            ${SPLUNK_HOST}
+        Port            ${SPLUNK_PORT}
+        TLS             On
+        TLS.Verify      Off
+        Splunk_Token    ${SPLUNK_TOKEN}
+        Splunk_Send_Raw On
 
   parsers.conf: |
     [PARSER]
@@ -109,4 +110,4 @@ data:
         Format      regex
         Regex       ^\<(?<pri>[0-9]+)\>(?<time>[^ ]* {1,2}[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)? *(?<message>.*)$
         Time_Key    time
-        Time_Format %b %d %H:%M:%S
+        Time_Format %b %d %H:%M:%S 
