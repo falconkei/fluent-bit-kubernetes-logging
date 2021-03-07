@@ -120,7 +120,7 @@ data:
         Format regex
         Regex ^(?<time>[^ ]*).\d{9}: (?<level>[a-zA-Z]*) (?<message>[^(]*) \((?<info>.*)\)$
         Time_Key    time
-        Time_Format %H:%M:%S%z
+        Time_Format %H:%M:%S
 
     [PARSER]
         Name        syslog
