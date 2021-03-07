@@ -49,9 +49,9 @@ data:
   output-forward.conf: |
     [OUTPUT]
         Name            forward
-        Match           *
+        Match           kube.*
         Host            ${FLUENT_FORWARDER_HOST}
-        Port            ${FLUENT_FORWARDER_PORT}     
+        Port            ${FLUENT_FORWARDER_PORT}  
 
   parsers.conf: |
     [PARSER]
@@ -106,12 +106,4 @@ data:
         Format      regex
         Regex       ^\<(?<pri>[0-9]+)\>(?<time>[^ ]* {1,2}[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)? *(?<message>.*)$
         Time_Key    time
-        Time_Format %b %d %H:%M:%S
- 
- 
-     [PARSER]
-        Name        multi_line
-        Format      regex
-        Regex       (?<log>^{"log":"\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}.*)
-     
-     
+        Time_Format %b %d %H:%M:%S 
