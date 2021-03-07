@@ -65,7 +65,6 @@ data:
         TLS             On
         TLS.Verify      Off
         Splunk_Token    ${SPLUNK_TOKEN}
-        Splunk_Send_Raw On
 
   parsers.conf: |
     [PARSER]
