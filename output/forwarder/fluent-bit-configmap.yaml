@@ -49,7 +49,7 @@ data:
   output-forward.conf: |
     [OUTPUT]
         Name            forward
-        Match           kube.*
+        Match           *
         Host            ${FLUENT_FORWARDER_HOST}
         Port            ${FLUENT_FORWARDER_PORT}  
 
