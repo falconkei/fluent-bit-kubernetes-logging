@@ -36,6 +36,7 @@ data:
     [INPUT]
         Name              tail
         Tag               falco.*
+        Key               falco
         Path              /var/log/falco/*
         Parser            falco
         DB                /var/log/flb_falco.db
