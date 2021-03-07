@@ -29,10 +29,10 @@ spec:
         ports:
           - containerPort: 2020
         env:
-        - name: FLUENT_ELASTICSEARCH_HOST
-          value: "elasticsearch"
-        - name: FLUENT_ELASTICSEARCH_PORT
-          value: "9200"
+        - name: FLUENT_FORWARDER_HOST
+          value: "172.31.24.39"
+        - name: FLUENT_FORWARDER_PORT
+          value: "24224"
         volumeMounts:
         - name: varlog
           mountPath: /var/log
