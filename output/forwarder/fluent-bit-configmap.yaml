@@ -50,8 +50,8 @@ data:
     [OUTPUT]
         Name            forward
         Match           *
-        Host            172.31.24.39
-        Port            24224     
+        Host            ${FLUENT_FORWARDER_HOST}
+        Port            ${FLUENT_FORWARDER_PORT}     
 
   parsers.conf: |
     [PARSER]
