@@ -32,17 +32,6 @@ data:
         Mem_Buf_Limit     5MB
         Skip_Long_Lines   On
         Refresh_Interval  10
-        
-    [INPUT]
-        Name              tail
-        Tag               falco.*
-        Key               falco
-        Path              /var/log/falco/*
-        Parser            falco
-        DB                /var/log/flb_falco.db
-        Mem_Buf_Limit     5MB
-        Skip_Long_Lines   On
-        Refresh_Interval  10
 
   filter-kubernetes.conf: |
     [FILTER]
@@ -114,13 +103,6 @@ data:
         Regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<message>.*)$
         Time_Key    time
         Time_Format %Y-%m-%dT%H:%M:%S.%L%z
-        
-    [PARSER]
-        Name falco
-        Format regex
-        Regex ^(?<time>[^ ]*).\d{9}: (?<level>[a-zA-Z]*) (?<message>[^(]*) \((?<info>.*)\)$
-        Time_Key    time
-        Time_Format %H:%M:%S
 
     [PARSER]
         Name        syslog
